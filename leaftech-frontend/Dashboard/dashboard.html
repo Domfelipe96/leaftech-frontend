@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Tech - Relatório de Vendas</title>
+    <!-- Referência ao arquivo CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Leaf Tech - Relatório de vendas</div>
+        <nav>
+            <ul>
+                <li><a href="/Index/index.html">Início</a></li>
+                <li><a href="/Produtos/produtos.html">Produtos</a></li>
+                <li><a href="/Dashboard/dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="dashboard">
+        <div id="sales-summary">
+            <h1>Resumo de Vendas:</h1><br>
+            <div class="summary-item">
+                <h2>Total de Vendas:</h2>
+                <span id="total-sales">0</span>
+            </div>
+            <div class="summary-item">
+                <h2>Valor Total:</h2>
+                <span>R$ <span id="total-revenue">0.00</span></span>
+            </div>
+        </div>
+
+        <div>
+            <h2>Vendas Recentes:</h2><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Preço</th>
+                        <th>Data</th>
+                        <th>Método de Pagamento</th>
+                    </tr>
+                </thead>
+                <tbody id="sales-list">
+                    <!-- Vendas serão carregadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Referência ao arquivo JavaScript -->
+    <script src="dashboard.js"></script>
+
+    <footer>
+        <p>&copy; 2024 Leaf Tech. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

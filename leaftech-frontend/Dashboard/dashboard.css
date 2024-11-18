@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #00aeff; /* Cor do cabeçalho */
+    color: yellow;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: yellow;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#sales-summary {
+    margin-right: 20px;
+    flex: 1;
+}
+
+.summary-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e7f3ff; /* Cor de fundo suave */
+    border-left: 4px solid #00aeff; /* Destaque à esquerda */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-item h2 {
+    margin: 0; /* Remove a margem do título */
+    flex: 1; /* Permite que o título use o espaço restante */
+}
+
+.summary-item span {
+    margin-left: 10px; /* Adiciona espaço entre o texto e o número */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    margin-top: 200px;
+}
+
+table th {
+    background-color: #00aeff;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #00aeff;
+    color: yellow;
+    position: relative;
+    width: 100%;
+    margin-top: auto; /* Para empurrar o rodapé para o final */
+}

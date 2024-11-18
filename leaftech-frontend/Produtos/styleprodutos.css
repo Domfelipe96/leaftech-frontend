@@ -1,0 +1,84 @@
+body {
+    background-color: whitesmoke;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #00aeff; /* Cor do cabeçalho */
+    color: yellow;
+    padding: 10px;
+    display: flex;
+    margin-left: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: yellow;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.produtos-list {
+    display: block;
+    margin: 50px;
+}
+
+.product-item {
+    margin: 70px 0;
+    padding: 20px;
+    background-color: white;
+    transition: transform 0.2s;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00aeff;
+    color: yellow;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    margin-left: auto;
+    padding: 10px;
+    margin-right: auto; /* Alinha o logo à esquerda */
+    background-color: #00aeff;
+    color: yellow;
+    position: relative;
+    width: 100%;
+}
