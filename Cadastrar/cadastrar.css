@@ -1,0 +1,139 @@
+/* Estilo global */
+body {
+    background-color: whitesmoke;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do cabeçalho */
+.header {
+    background-color: #00aeff; /* Cor do cabeçalho */
+    color: yellow;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo alinhada à direita */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto; /* Move o logo para a direita */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: yellow;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Container centralizado */
+.container {
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 550px;
+}
+
+/* Títulos */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50; /* Azul-escuro */
+}
+
+/* Texto de suporte */
+p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #7f8c8d; /* Cinza claro */
+}
+
+/* Flexbox para linha de formulários */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Aumentando o espaçamento entre os campos */
+    margin-bottom: 25px; /* Adicionando espaçamento entre as linhas */
+}
+
+.form-row input {
+    width: 48%; /* Dois campos por linha, com espaçamento */
+    padding: 15px; /* Aumentando o padding para aumentar o tamanho dos campos */
+    font-size: 16px; /* Aumentando o tamanho da fonte */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botões */
+button {
+    background-color: #00aeff; /* Azul vibrante */
+    color: yellow;
+    padding: 15px 20px; /* Aumentando o tamanho do botão */
+    font-size: 18px; /* Aumentando o tamanho da fonte */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838; /* Alterando a cor para um verde escuro */
+}
+
+/* Links */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #00aeff; /* Azul vibrante */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9; /* Azul mais escuro */
+}
+
+/* Mensagem de erro ou sucesso */
+.message {
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+.message.error {
+    color: #e74c3c; /* Vermelho para erros */
+}
+
+.message.success {
+    color: #2ecc71; /* Verde para sucessos */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #00aeff; /* Cor do rodapé */
+    color: yellow;
+}
