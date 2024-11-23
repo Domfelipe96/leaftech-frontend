@@ -45,13 +45,13 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 // Função para redirecionar ao cadastro
 document.querySelector('.login-options a[href="/Cadastrar/cadastrar.html"]').addEventListener('click', function (event) {
     event.preventDefault();
-    window.location.href = '/Cadastrar/cadastrar.html'; // Redireciona para a página de cadastro
+    window.location.href = '../Cadastrar/cadastrar.html'; // Redireciona para a página de cadastro
 });
 
 // Função para redirecionar à recuperação de senha
 document.querySelector('.login-options a[href="/RecuperarSenha/esqueci-senha.html"]').addEventListener('click', function (event) {
     event.preventDefault();
-    window.location.href = '/RecuperarSenha/esqueci-senha.html'; // Redireciona para a página de recuperação de senha
+    window.location.href = '../RecuperarSenha/esqueci-senha.html'; // Redireciona para a página de recuperação de senha
 });
 
 // Função para exibir o dashboard
