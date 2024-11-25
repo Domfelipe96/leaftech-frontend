@@ -5,35 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaf Tech - Fazenda Urbana</title>
-    <link rel="stylesheet" href="styleindex.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/chart.js"></script>
-    <script src="script.js" defer></script> <!-- Referência para o arquivo JavaScript externo -->
     <style>
-        /* Estilo dos containers de gráfico */
-        .charts-container {
+        /* Configuração geral do layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            flex: 1;
             display: flex;
             justify-content: center;
-            margin-top: 10px;
-            gap: 20px;
+            align-items: center;
         }
 
-        .chart {
-            width: 500px;
-            height: 500px;
-        }
-
-        /* Estilo do título de resumo */
-        .summary-title {
+        footer {
             text-align: center;
-            margin: 20px 0;
-            font-size: 24px;
-            color: #333;
+            padding: 10px;
+            background-color: #00aeff;
+            color: yellow;
         }
 
-        /* Estilo das opções de login */
+        /* Estilo do login */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* Limita a largura */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona um leve sombreado */
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%; /* Preenche toda a largura do container */
+        }
+
+        .login-container input,
+        .login-container button {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
         .login-options {
-            margin-top: 15px;
+            margin-top: 10px;
             text-align: center;
         }
 
@@ -47,119 +90,31 @@
             text-decoration: underline;
         }
 
-        /* Estilo do dashboard */
-        .dashboard {
-            display: none;
-        }
-
-        .hero {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #00aeff;
-            color: yellow;
-            margin-top: 23%;
-        }
-
-        /* Estilo do login */
-        .login-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-
-        .login-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .login-container input,
-        .login-container button {
-            padding: 10px;
-            font-size: 16px;
-            width: 250px;
-        }
-
-        .login-container button {
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-        }
-
-        .login-container button:hover {
-            background-color: #0056b3;
-        }
-
         .message {
             color: red;
             margin-top: 10px;
-        }
-
-        /* Estilo para esconder o header e dashboard inicialmente */
-        .header.hidden,
-        .dashboard.hidden,
-        .hero.hidden {
-            display: none;
         }
     </style>
 </head>
 
 <body>
-    <!-- Formulário de Login -->
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" required>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" required>
-            <button type="submit">Entrar</button>
-        </form>
-        <div id="message" class="message"></div>
-
-        <!-- Opções adicionais -->
-        <div class="login-options">
-            <a href="/Cadastrar/cadastrar.html">Cadastrar-se</a>
-            <a href="/RecuperarSenha/esqueci-senha.html">Esqueci minha senha</a>
-        </div>
-    </div>
-
-    <!-- Restante do conteúdo da página -->
-    <header class="header hidden">
-        <div class="logo">Leaf Tech - Dashboard</div>
-        <nav>
-            <ul>
-                <li><a href="#" id="inicioBtn">Início</a></li>
-                <li><a href="../Produtos/produtos.html">Produtos</a></li>
-                <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
-                <li><button id="logoutBtn" class="logout-button">Sair</button></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero hidden">
-        <h1>Resumo de Vendas:</h1>
-    </section>
-
-    <section class="dashboard hidden">
-        <div class="charts-container">
-            <div id="sales-summary">
-                <h2>Vendas por Item:</h2>
-                <canvas class="chart" id="salesChart"></canvas>
-            </div>
-            <div id="revenue-summary">
-                <h2>Receita por Forma de Pagamento:</h2>
-                <canvas class="chart" id="revenueChart"></canvas>
+    <main>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <div id="message" class="message"></div>
+            <div class="login-options">
+                <a href="/Cadastrar/cadastrar.html">Cadastrar-se</a>
+                <a href="/RecuperarSenha/esqueci-senha.html">Esqueci minha senha</a>
             </div>
         </div>
-    </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 Leaf Tech. Todos os direitos reservados.</p>
