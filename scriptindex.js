@@ -8,6 +8,7 @@ async function obterClientes() {
 // Função para verificar o login
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o envio do formulário
+
     const inputEmail = document.getElementById('username').value;
     const inputPassword = document.getElementById('password').value;
 
@@ -27,6 +28,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             localStorage.setItem('nomeCliente', clienteEncontrado.nome);
             localStorage.setItem('clienteEndereco', clienteEncontrado.endereco.rua);
 
+            // Exibe as partes ocultas da página após login
             mostrarDashboard();
         } else {
             // Falha no login
@@ -42,25 +44,37 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
 // Função para exibir o dashboard
 function mostrarDashboard() {
-    document.querySelector('.login-container').style.display = 'none';
-    document.querySelector('.header').classList.remove('hidden'); // Exibe o header
-    document.querySelector('.hero').classList.remove('hidden'); // Exibe o resumo de vendas
+    document.querySelector('.login-container').style.display = 'none'; // Oculta o login
+    document.querySelector('.header').classList.remove('hidden'); // Exibe o cabeçalho
+    document.querySelector('.hero').classList.remove('hidden'); // Exibe a seção de resumo
     document.querySelector('.dashboard').classList.remove('hidden'); // Exibe o dashboard
-    loadSalesData();
 }
 
 // Verifica se o usuário está logado ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
+
     if (isLoggedIn === 'true') {
-        mostrarDashboard();
+        mostrarDashboard(); // Exibe o dashboard se o usuário estiver logado
     } else {
-        // Se não estiver logado, mantém tudo oculto
+        // Se não estiver logado, mantém a página de login visível e oculta o restante
         document.querySelector('.header').classList.add('hidden');
         document.querySelector('.hero').classList.add('hidden');
         document.querySelector('.dashboard').classList.add('hidden');
     }
 });
 
-// Lógica para o botão "Sair"
-document.getElementById('logoutBtn').addEventListener('
+// Função de logout
+document.getElementById('logoutBtn').addEventListener('click', function () {
+    // Remove o estado de login do localStorage
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('idCliente');
+    localStorage.removeItem('nomeCliente');
+    localStorage.removeItem('clienteEndereco');
+
+    // Exibe novamente a página de login e oculta o dashboard
+    document.querySelector('.login-container').style.display = 'flex';
+    document.querySelector('.header').classList.add('hidden');
+    document.querySelector('.hero').classList.add('hidden');
+    document.querySelector('.dashboard').classList.add('hidden');
+});
