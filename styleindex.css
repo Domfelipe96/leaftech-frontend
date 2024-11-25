@@ -2,23 +2,29 @@ body {
     background-color: whitesmoke;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
 }
 
 /* Estilo do cabeçalho */
-.header {
+header {
     background-color: #00aeff; /* Cor do cabeçalho */
     color: yellow;
-    padding: 10px;
+    padding: 5px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-/* Logo alinhada à direita */
+/* Logo alinhada à esquerda */
 .logo {
     font-size: 24px;
     font-weight: bold;
-    margin-left: auto; /* Move o logo para a direita */
+}
+
+/* Navegação */
+nav {
+    flex: 1; /* Ocupa o espaço disponível entre o logo e os links */
+    display: flex;
+    justify-content: flex-end; /* Alinha os links totalmente à direita */
 }
 
 nav ul {
@@ -28,17 +34,16 @@ nav ul {
     display: flex;
 }
 
-nav ul li {
-    margin-left: 10px;
-}
-
 nav ul li a {
     color: yellow;
     text-decoration: none;
+    padding: 5px 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Estilo do dashboard */
@@ -58,7 +63,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    gap: 20px;
+    gap: 30px;
 }
 
 .chart {
