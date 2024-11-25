@@ -1,5 +1,6 @@
+/* Estilização geral */
 body {
-    background-color: whitesmoke;
+    background-color: #f4f4f4;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -76,7 +77,6 @@ footer {
     text-align: center;
     margin-left: auto;
     padding: 10px;
-    margin-right: auto; /* Alinha o logo à esquerda */
     background-color: #00aeff;
     color: yellow;
     position: relative;

@@ -1,24 +1,24 @@
 /* Estilização geral */
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Cabeçalho */
+/* Estilo do cabeçalho */
 header {
-    background-color: #007bff; /* Azul mais sóbrio */
-    color: #fff;
-    padding: 15px;
+    background-color: #00aeff;
+    color: yellow;
+    padding: 10px 20px;
     display: flex;
+    margin-left: auto;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -30,18 +30,16 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: yellow;
     text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #ffdd57; /* Amarelo destaque */
+    text-decoration: underline;
 }
 
 /* Dashboard */
@@ -66,7 +64,7 @@ nav ul li a:hover {
     margin-bottom: 15px;
     padding: 15px;
     background-color: #e7f3ff; /* Fundo leve */
-    border-left: 6px solid #007bff; /* Destaque com borda maior */
+    border-left: 6px solid #00aeff; /* Destaque com borda maior */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,7 +81,7 @@ nav ul li a:hover {
 .summary-item span {
     font-size: 18px;
     font-weight: bold;
-    color: #007bff;
+    color: #00aeff;
 }
 
 /* Tabela de vendas */
@@ -101,8 +99,8 @@ table td {
 }
 
 table th {
-    background-color: #007bff; /* Azul para cabeçalho */
-    color: #fff;
+    background-color: #00aeff; /* Azul para cabeçalho */
+    color: yellow;
     font-size: 16px;
 }
 
@@ -117,24 +115,12 @@ table tr:hover {
 /* Rodapé */
 footer {
     text-align: center;
-    padding: 15px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 10px;
+    margin-top: 395px;
+    background-color: #00aeff;
+    color: yellow;
     position: relative;
     width: 100%;
-    margin-top: auto;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-footer a {
-    color: #ffdd57;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #fff;
 }
 
 /* Responsividade */
