@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styleindex.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/chart.js"></script>
-    <script src="scriptindex.js" defer></script>
+    <script src="script.js" defer></script> <!-- Referência para o arquivo JavaScript externo -->
     <style>
         /* Estilo dos containers de gráfico */
         .charts-container {
@@ -45,7 +45,7 @@
 
         .login-options a:hover {
             text-decoration: underline;
-        }     
+        }
 
         /* Estilo do dashboard */
         .dashboard {
@@ -62,7 +62,7 @@
             padding: 10px;
             background-color: #00aeff;
             color: yellow;
-            margin-top: 50px;
+            margin-top: 23%;
         }
 
         /* Estilo do login */
@@ -101,6 +101,13 @@
             color: red;
             margin-top: 10px;
         }
+
+        /* Estilo para esconder o header e dashboard inicialmente */
+        .header.hidden,
+        .dashboard.hidden,
+        .hero.hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -125,7 +132,7 @@
     </div>
 
     <!-- Restante do conteúdo da página -->
-    <header class="header">
+    <header class="header hidden">
         <div class="logo">Leaf Tech - Dashboard</div>
         <nav>
             <ul>
@@ -137,11 +144,11 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero hidden">
         <h1>Resumo de Vendas:</h1>
     </section>
 
-    <section class="dashboard">
+    <section class="dashboard hidden">
         <div class="charts-container">
             <div id="sales-summary">
                 <h2>Vendas por Item:</h2>

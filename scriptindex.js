@@ -1,6 +1,5 @@
 // Função para obter os clientes cadastrados (simulação de chamada para o servidor ou API)
 async function obterClientes() {
-    // Simulação de uma chamada fetch para obter os clientes cadastrados
     const response = await fetch('http://localhost:8000/api/clientes');
     const clientes = await response.json();
     return clientes;
@@ -9,7 +8,6 @@ async function obterClientes() {
 // Função para verificar o login
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o envio do formulário
-
     const inputEmail = document.getElementById('username').value;
     const inputPassword = document.getElementById('password').value;
 
@@ -42,59 +40,27 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
 });
 
-// Função para redirecionar ao cadastro
-document.querySelector('.login-options a[href="/Cadastrar/cadastrar.html"]').addEventListener('click', function (event) {
-    event.preventDefault();
-    window.location.href = '../Cadastrar/cadastrar.html'; // Redireciona para a página de cadastro
-});
-
-// Função para redirecionar à recuperação de senha
-document.querySelector('.login-options a[href="/RecuperarSenha/esqueci-senha.html"]').addEventListener('click', function (event) {
-    event.preventDefault();
-    window.location.href = '../RecuperarSenha/esqueci-senha.html'; // Redireciona para a página de recuperação de senha
-});
-
 // Função para exibir o dashboard
 function mostrarDashboard() {
     document.querySelector('.login-container').style.display = 'none';
-    document.querySelector('header').style.display = 'block';
-    document.querySelector('.hero').style.display = 'block';
-    document.querySelector('.dashboard').style.display = 'block';
+    document.querySelector('.header').classList.remove('hidden'); // Exibe o header
+    document.querySelector('.hero').classList.remove('hidden'); // Exibe o resumo de vendas
+    document.querySelector('.dashboard').classList.remove('hidden'); // Exibe o dashboard
     loadSalesData();
 }
 
 // Verifica se o usuário está logado ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
-
     if (isLoggedIn === 'true') {
         mostrarDashboard();
     } else {
-        // Se não estiver logado, oculta o dashboard
-        document.querySelector('header').style.display = 'none';
-        document.querySelector('.hero').style.display = 'none';
-        document.querySelector('.dashboard').style.display = 'none';
-    }
-});
-
-function login() {
-// Lógica para o botão "Início"
-document.getElementById('inicioBtn').addEventListener('click', function () {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-    if (isLoggedIn === 'true') {
-        mostrarDashboard();
+        // Se não estiver logado, mantém tudo oculto
+        document.querySelector('.header').classList.add('hidden');
+        document.querySelector('.hero').classList.add('hidden');
+        document.querySelector('.dashboard').classList.add('hidden');
     }
 });
 
 // Lógica para o botão "Sair"
-document.getElementById('logoutBtn').addEventListener('click', function () {
-    // Remove o estado de login do localStorage
-    localStorage.removeItem('isLoggedIn');
-    // Oculta o dashboard e exibe o formulário de login
-    document.querySelector('header').style.display = 'none';
-    document.querySelector('.hero').style.display = 'none';
-    document.querySelector('.dashboard').style.display = 'none';
-    document.querySelector('.login-container').style.display = 'block';
-});
-}
+document.getElementById('logoutBtn').addEventListener('
