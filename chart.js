@@ -1,4 +1,3 @@
-// Função para carregar os dados do dashboard (permanece igual ao original)
 function loadSalesData() {
     const allSales = JSON.parse(localStorage.getItem('todasVendas')) || [];
     const salesByItem = {};
@@ -6,15 +5,15 @@ function loadSalesData() {
     let totalRevenue = 0;
 
     allSales.forEach(sale => {
-        const saleTotal = sale.items.reduce((acc, item) => acc + item.price, 0);
+        const saleTotal = sale.items.reduce((acc, item) => acc + parseFloat(item.preco), 0);
         totalRevenue += saleTotal;
 
         // Agrupa vendas por item
         sale.items.forEach(item => {
-            if (!salesByItem[item.item]) {
-                salesByItem[item.item] = 0;
+            if (!salesByItem[item.nome]) {
+                salesByItem[item.nome] = 0;
             }
-            salesByItem[item.item]++;
+            salesByItem[item.nome]++;
         });
 
         // Agrupa receita por forma de pagamento
@@ -24,25 +23,37 @@ function loadSalesData() {
         revenueByPaymentMethod[sale.paymentMethod] += saleTotal;
     });
 
+    // Cores fixas para os gráficos
+    const colors = [
+        'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'
+    ];
+    const borderColors = [
+        'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'
+    ];
+
+    // Dados dinâmicos para o gráfico de vendas por produto
+    const productLabels = Object.keys(salesByItem);
+    const productData = Object.values(salesByItem);
+
+    // Dados dinâmicos para o gráfico de receita por método de pagamento
+    const paymentLabels = Object.keys(revenueByPaymentMethod);
+    const paymentData = Object.values(revenueByPaymentMethod);
+
     // Primeiro gráfico: Vendas por produto
     const salesChartCtx = document.getElementById('salesChart').getContext('2d');
     new Chart(salesChartCtx, {
         type: 'bar',
         data: {
-            labels: ['Banana Nanica', 'Maçã Gala', 'Alface Crespa', 'Couve Manteiga', 'Manjericão', 'Hortelã', 'Camomila', 'Erva-doce'], // Produtos de todas as categorias
+            labels: productLabels, // Produtos dinâmicos
             datasets: [{
                 label: 'Quantidade Vendida',
-                data: [15, 10, 8, 12, 6, 9, 4, 7], // Dados fictícios
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'
-                ],
+                data: productData, // Quantidades dinâmicas
+                backgroundColor: colors.slice(0, productLabels.length), // Cores fixas
+                borderColor: borderColors.slice(0, productLabels.length), // Bordas fixas
                 borderWidth: 1
             }]
         },
@@ -55,23 +66,17 @@ function loadSalesData() {
         }
     });
 
-    // Segundo gráfico: Vendas totais por categoria
+    // Segundo gráfico: Receita por método de pagamento
     const revenueChartCtx = document.getElementById('revenueChart').getContext('2d');
     new Chart(revenueChartCtx, {
-        type: 'pie', // Gráfico de pizza para categorias
+        type: 'pie',
         data: {
-            labels: ['Frutas', 'Hortaliças', 'Plantas Aromáticas', 'Ervas Medicinais'], // Categorias de produtos
+            labels: paymentLabels, // Métodos de pagamento dinâmicos
             datasets: [{
-                label: 'Vendas por Categoria',
-                data: [25, 20, 15, 10], // Dados fictícios de vendas por categoria
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-                    'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
-                    'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'
-                ],
+                label: 'Receita por Método de Pagamento',
+                data: paymentData, // Receitas dinâmicas
+                backgroundColor: colors.slice(0, paymentLabels.length), // Cores fixas
+                borderColor: borderColors.slice(0, paymentLabels.length), // Bordas fixas
                 borderWidth: 1
             }]
         },
