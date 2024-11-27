@@ -1,0 +1,125 @@
+/* Configurações gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Cabeçalho fixo */
+header {
+    background-color: #00aeff;
+    color: yellow;
+    padding: 1px 0; /* Reduzido o padding */
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em; /* Reduzido o tamanho da fonte */
+}
+
+/* Área principal */
+main {
+    padding: 20px;
+    margin-top: 60px; /* Ajustado o espaço para o novo tamanho do header */
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa de status da entrega */
+.delivery-status {
+    padding: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+/* Exibição do status */
+#status-display {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #00aeff;
+    transition: color 0.3s ease;
+}
+
+/* Estilo do tempo restante */
+#time-remaining {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #FF5722;
+    margin-bottom: 20px;
+}
+
+/* Imagem do mapa */
+#map-image {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#map-image:hover {
+    transform: scale(1.00);
+}
+
+/* Botão de confirmação */
+#confirm-delivery {
+    padding: 14px 30px;
+    background-color: #00aeff;
+    color: yellow;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: none;
+    text-align: center;
+    align-self: center;
+}
+
+#confirm-delivery:hover {
+    background-color: #009cdb;
+    transform: translateY(-2px);
+}
+
+#confirm-delivery:active {
+    transform: translateY(0);
+}
+
+/* Rodapé */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #00aeff;
+    color: yellow;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}

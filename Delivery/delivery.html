@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreamento de Entrega</title>
+    <link rel="stylesheet" href="styledelivery.css">
+</head>
+<body>
+    <header>
+        <h1>Rastreamento de Entrega - LeafTech</h1>
+        <nav>
+            <ul>
+                <li><a href="/Index/index.html">Início</a></li>
+                <li><a href="/Produtos/produtos.html">Produtos</a></li>
+                <li><a href="/Dashboard/dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    </header>
+    <main>
+        <section class="delivery-status">
+            <h2>Acompanhe o status de entrega do seu pedido:</h2>
+            <div id="status-display">Aguarde a confirmação do pedido</div> <!-- Mensagem inicial -->
+            <p><strong>Tempo restante:</strong> <span id="time-remaining">04:00</span></p> <!-- Tempo inicial para 4 minutos -->
+            
+            <!-- Imagem do mapa -->
+            <img id="map-image" src="mapa.jpg" alt="Mapa de entrega" /> 
+
+            <!-- Botão para confirmar a entrega -->
+            <button id="confirm-delivery" style="display: none;" disabled>Aguarde...</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Leaf Tech App</p>
+    </footer>
+
+    <!-- Script que controla o status e o tempo da entrega -->
+    <script src="scriptdelivey.js"></script>
+</body>
+</html>
