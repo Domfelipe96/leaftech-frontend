@@ -1,16 +1,38 @@
 // Função para obter os clientes cadastrados (simulação de chamada para o servidor ou API)
 async function obterClientes() {
-    const response = await fetch('http://localhost:8000/api/clientes');
-    const clientes = await response.json();
-    return clientes;
+    try {
+        const response = await fetch('http://localhost:8000/api/clientes');
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+        const clientes = await response.json();
+        return clientes;
+    } catch (error) {
+        console.error('Erro ao obter clientes:', error);
+        throw error; // Re-throw para ser capturado no bloco catch do login
+    }
 }
 
 // Função para verificar o login
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o envio do formulário
 
+    // Obtendo elementos do DOM
     const inputEmail = document.getElementById('username').value;
     const inputPassword = document.getElementById('password').value;
+    const messageElement = document.getElementById('message');
+    const loadingElement = document.getElementById('loading');
+
+    // Exibe o elemento de carregamento
+    loadingElement.style.display = 'block';
+
+    // Verifica se os campos de email e senha não estão vazios
+    if (!inputEmail || !inputPassword) {
+        messageElement.style.color = 'red';
+        messageElement.textContent = 'Por favor, preencha todos os campos!';
+        loadingElement.style.display = 'none'; // Oculta o carregamento após a verificação falhar
+        return;
+    }
 
     try {
         // Obtém os clientes cadastrados (chama a função obterClientes)
@@ -32,13 +54,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             mostrarDashboard();
         } else {
             // Falha no login
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').textContent = 'Usuário ou senha incorretos!';
+            messageElement.style.color = 'red';
+            messageElement.textContent = 'Usuário ou senha incorretos!';
         }
     } catch (error) {
         // Exibe erro caso a requisição falhe (ex: API fora do ar)
-        document.getElementById('message').style.color = 'red';
-        document.getElementById('message').textContent = 'Erro ao verificar login. Tente novamente mais tarde.';
+        messageElement.style.color = 'red';
+        messageElement.textContent = 'Erro de rede ou servidor. Tente novamente mais tarde.';
+    } finally {
+        // Oculta o elemento de carregamento após a verificação
+        loadingElement.style.display = 'none';
     }
 });
 
