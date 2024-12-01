@@ -1,32 +1,38 @@
+/* Estilização geral */
 body {
     background-color: whitesmoke;
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da página */
 }
 
 /* Estilo do cabeçalho */
-header {
+.header {
     background-color: #00aeff; /* Cor do cabeçalho */
     color: yellow;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo alinhada à esquerda */
+/* Logo do cabeçalho */
 .logo {
     font-size: 24px;
     font-weight: bold;
 }
 
-/* Navegação */
-nav {
-    flex: 1; /* Ocupa o espaço disponível entre o logo e os links */
+/* Container para os botões do cabeçalho */
+.header-buttons {
+    margin-left: auto; /* Empurra os botões para a direita */
     display: flex;
-    justify-content: flex-end; /* Alinha os links totalmente à direita */
+    gap: 15px; /* Espaçamento entre os botões */
 }
 
+/* Navegação */
 nav ul {
     list-style: none;
     padding: 0;
@@ -34,16 +40,17 @@ nav ul {
     display: flex;
 }
 
+nav ul li {
+    margin-left: 10px;
+}
+
 nav ul li a {
     color: yellow;
     text-decoration: none;
-    padding: 5px 5px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
 }
 
 /* Estilo do dashboard */
@@ -63,7 +70,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    gap: 30px;
+    gap: 20px;
 }
 
 .chart {
@@ -143,10 +150,11 @@ nav ul li a:hover {
     background-color: #c82333;
 }
 
+/* Rodapé */
 footer {
     text-align: center;
     padding: 10px;
     background-color: #00aeff; /* Cor do rodapé */
     color: yellow;
-    margin-top: 500px;
+    margin-top: auto; /* Empurra o footer para o fim da página */
 }

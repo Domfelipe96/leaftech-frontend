@@ -73,7 +73,7 @@ function loadSalesData() {
         data: {
             labels: paymentLabels, // Métodos de pagamento dinâmicos
             datasets: [{
-                label: 'Receita por Método de Pagamento',
+                label: 'Vendas por forma de Pagamento',
                 data: paymentData, // Receitas dinâmicas
                 backgroundColor: colors.slice(0, paymentLabels.length), // Cores fixas
                 borderColor: borderColors.slice(0, paymentLabels.length), // Bordas fixas

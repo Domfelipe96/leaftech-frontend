@@ -1,46 +1,24 @@
 /* Estilização geral */
 body {
+    background-color: whitesmoke;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    padding: 0;
 }
 
 /* Estilo do cabeçalho */
 header {
-    background-color: #00aeff;
+    background-color: #00aeff; /* Cor do cabeçalho */
     color: yellow;
-    padding: 10px 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header .logo {
+.logo {
     font-size: 24px;
     font-weight: bold;
-}
-
-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-header ul li {
-    margin-left: 20px;
-}
-
-header ul li a {
-    color: yellow;
-    text-decoration: none;
-}
-
-header ul li a:hover {
-    text-decoration: underline;
 }
 
 nav ul {
@@ -85,7 +63,7 @@ nav ul li a:hover {
     margin-bottom: 15px;
     padding: 15px;
     background-color: #e7f3ff; /* Fundo leve */
-    border-left: 6px solid #00aeff; /* Destaque com borda maior */
+    border-left: 6px solid #007bff; /* Destaque com borda maior */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,7 +80,7 @@ nav ul li a:hover {
 .summary-item span {
     font-size: 18px;
     font-weight: bold;
-    color: #00aeff;
+    color: #007bff;
 }
 
 /* Tabela de vendas */
@@ -136,12 +114,12 @@ table tr:hover {
 /* Rodapé */
 footer {
     text-align: center;
-    padding: 10px;
-    margin-top: 395px;
+    padding: 15px;
     background-color: #00aeff;
     color: yellow;
     position: relative;
     width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsividade */

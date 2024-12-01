@@ -3,13 +3,12 @@ async function obterClientes() {
     try {
         const response = await fetch('http://localhost:8000/api/clientes');
         if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.status}`);
+            throw new Error('Erro ao obter clientes');
         }
-        const clientes = await response.json();
-        return clientes;
+        return await response.json();
     } catch (error) {
-        console.error('Erro ao obter clientes:', error);
-        throw error; // Re-throw para ser capturado no bloco catch do login
+        console.error('Erro na chamada da API:', error);
+        throw error;
     }
 }
 
@@ -17,29 +16,15 @@ async function obterClientes() {
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o envio do formulário
 
-    // Obtendo elementos do DOM
     const inputEmail = document.getElementById('username').value;
     const inputPassword = document.getElementById('password').value;
-    const messageElement = document.getElementById('message');
-    const loadingElement = document.getElementById('loading');
-
-    // Exibe o elemento de carregamento
-    loadingElement.style.display = 'block';
-
-    // Verifica se os campos de email e senha não estão vazios
-    if (!inputEmail || !inputPassword) {
-        messageElement.style.color = 'red';
-        messageElement.textContent = 'Por favor, preencha todos os campos!';
-        loadingElement.style.display = 'none'; // Oculta o carregamento após a verificação falhar
-        return;
-    }
 
     try {
-        // Obtém os clientes cadastrados (chama a função obterClientes)
+        // Obtém os clientes cadastrados
         const clientes = await obterClientes();
 
         // Verifica se o email e a senha correspondem a um cliente cadastrado
-        const clienteEncontrado = clientes.find(cliente => 
+        const clienteEncontrado = clientes.find(cliente =>
             cliente.dados_pessoais.email === inputEmail && cliente.dados_pessoais.senha === inputPassword
         );
 
@@ -50,29 +35,32 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             localStorage.setItem('nomeCliente', clienteEncontrado.nome);
             localStorage.setItem('clienteEndereco', clienteEncontrado.endereco.rua);
 
-            // Exibe as partes ocultas da página após login
             mostrarDashboard();
         } else {
             // Falha no login
-            messageElement.style.color = 'red';
-            messageElement.textContent = 'Usuário ou senha incorretos!';
+            mostrarMensagem('Usuário ou senha incorretos!', 'red');
         }
     } catch (error) {
-        // Exibe erro caso a requisição falhe (ex: API fora do ar)
-        messageElement.style.color = 'red';
-        messageElement.textContent = 'Erro de rede ou servidor. Tente novamente mais tarde.';
-    } finally {
-        // Oculta o elemento de carregamento após a verificação
-        loadingElement.style.display = 'none';
+        // Exibe erro caso a requisição falhe
+        mostrarMensagem('Erro ao verificar login. Tente novamente mais tarde.', 'red');
     }
 });
 
 // Função para exibir o dashboard
 function mostrarDashboard() {
-    document.querySelector('.login-container').style.display = 'none'; // Oculta o login
-    document.querySelector('.header').classList.remove('hidden'); // Exibe o cabeçalho
-    document.querySelector('.hero').classList.remove('hidden'); // Exibe a seção de resumo
-    document.querySelector('.dashboard').classList.remove('hidden'); // Exibe o dashboard
+    document.querySelector('.login-container').style.display = 'none';
+    document.querySelector('header').style.display = 'block';
+    document.querySelector('.hero').style.display = 'block';
+    document.querySelector('.dashboard').style.display = 'block';
+
+    loadSalesData(); // Se necessário, insira a lógica para carregar dados do dashboard
+}
+
+// Função para exibir mensagens
+function mostrarMensagem(texto, cor) {
+    const messageElement = document.getElementById('message');
+    messageElement.style.color = cor;
+    messageElement.textContent = texto;
 }
 
 // Verifica se o usuário está logado ao carregar a página
@@ -80,16 +68,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
     if (isLoggedIn === 'true') {
-        mostrarDashboard(); // Exibe o dashboard se o usuário estiver logado
+        mostrarDashboard();
     } else {
-        // Se não estiver logado, mantém a página de login visível e oculta o restante
-        document.querySelector('.header').classList.add('hidden');
-        document.querySelector('.hero').classList.add('hidden');
-        document.querySelector('.dashboard').classList.add('hidden');
+        // Se não estiver logado, oculta o dashboard
+        document.querySelector('header').style.display = 'none';
+        document.querySelector('.hero').style.display = 'none';
+        document.querySelector('.dashboard').style.display = 'none';
     }
 });
 
-// Função de logout
+// Lógica para o botão "Início"
+document.getElementById('inicioBtn').addEventListener('click', function () {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn === 'true') {
+        mostrarDashboard();
+    }
+});
+
+// Lógica para o botão "Sair"
 document.getElementById('logoutBtn').addEventListener('click', function () {
     // Remove o estado de login do localStorage
     localStorage.removeItem('isLoggedIn');
@@ -97,9 +94,21 @@ document.getElementById('logoutBtn').addEventListener('click', function () {
     localStorage.removeItem('nomeCliente');
     localStorage.removeItem('clienteEndereco');
 
-    // Exibe novamente a página de login e oculta o dashboard
+    // Oculta o dashboard e exibe o formulário de login
+    document.querySelector('header').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    document.querySelector('.dashboard').style.display = 'none';
     document.querySelector('.login-container').style.display = 'flex';
-    document.querySelector('.header').classList.add('hidden');
-    document.querySelector('.hero').classList.add('hidden');
-    document.querySelector('.dashboard').classList.add('hidden');
+});
+
+// Redirecionamento para o cadastro
+document.querySelector('.login-options a[href="/Cadastrar/cadastrar.html"]').addEventListener('click', function (event) {
+    event.preventDefault();
+    window.location.href = '../Cadastrar/cadastrar.html'; // Redireciona para a página de cadastro
+});
+
+// Redirecionamento para a recuperação de senha
+document.querySelector('.login-options a[href="/RecuperarSenha/esqueci-senha.html"]').addEventListener('click', function (event) {
+    event.preventDefault();
+    window.location.href = '../RecuperarSenha/esqueci-senha.html'; // Redireciona para a página de recuperação de senha
 });

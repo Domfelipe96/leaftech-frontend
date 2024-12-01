@@ -14,21 +14,58 @@ body {
 
 /* Cabeçalho fixo */
 header {
+    display: flex;
+    justify-content: space-between; /* Espaço entre o título e os botões */
+    align-items: center;
     background-color: #00aeff;
     color: yellow;
-    padding: 1px 0; /* Reduzido o padding */
+    padding: 10px 20px; /* Ajuste de padding */
     width: 100%;
-    text-align: center;
     position: fixed;
     top: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1.1em; /* Reduzido o tamanho da fonte */
+    font-size: 1.1em;
+    z-index: 1000;
+}
+
+/* Título do cabeçalho */
+header h1 {
+    margin: 0;
+}
+
+/* Estilo do botão "Início" */
+#home-btn {
+    background-color: #00aeff; /* Cor do botão */
+    color: yellow;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#home-btn:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do botão "Sair" */
+#logout-btn {
+    padding: 10px 20px;
+    background-color: #ff4d4d; /* Cor do botão */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#logout-btn:hover {
+    background-color: #e60000; /* Cor ao passar o mouse */
 }
 
 /* Área principal */
 main {
     padding: 20px;
-    margin-top: 60px; /* Ajustado o espaço para o novo tamanho do header */
+    margin-top: 80px; /* Ajuste o espaço para o novo tamanho do header */
     text-align: center;
     width: 100%;
     max-width: 600px;

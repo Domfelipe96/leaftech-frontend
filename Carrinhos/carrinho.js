@@ -6,22 +6,20 @@ async function createSale(clienteId, produtosIds, endereco) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                cliente: clienteId,
+                cliente: clienteId,  // Certifique-se de que a variável clienteId está correta
                 produtos: produtosIds,
                 endereco: endereco
             }),
         });
 
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
-        const data = await response.json();
-        console.log('Venda criada com sucesso:', data);
+        
         alert('Venda registrada com sucesso!');
     } catch (error) {
         console.error('Erro ao criar venda:', error);
         alert('Erro ao registrar a venda. Verifique os detalhes e tente novamente.');
     }
 }
-
 
 function showCartItems() {
     const cartItemsDiv = document.getElementById('cart-items');
@@ -101,9 +99,8 @@ function finalizeOrder() {
     localStorage.removeItem('carrinho');
 
     alert('Pedido finalizado com sucesso!');
-    window.location.href = 'carrinho.html';
+    window.location.href = '/Delivery/delivery.html'; // Redireciona para a página delivery.html
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('carrinho.html')) {
