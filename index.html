@@ -104,12 +104,29 @@
             color: red;
             margin-top: 10px;
         }
+
+        /* Estilo da linha de referência de imagem */
+        .image-reference {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-reference img {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
 <body>
+    
     <!-- Formulário de Login -->
     <div class="login-container">
+        <!-- Linha de referência de imagem antes do login -->
+    <div class="image-reference">
+        <img src="/Imagens/logo.jpg" alt="Imagem de referência">
+    </div>
         <h2>Login</h2>
         <form id="loginForm">
             <label for="username">Usuário:</label>
@@ -164,4 +181,3 @@
 </body>
 
 </html>
-

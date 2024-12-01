@@ -1,3 +1,4 @@
+/* Estilo do corpo da página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -44,47 +45,93 @@ header ul li a:hover {
 
 /* Estilo da área do carrinho */
 .carrinho {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     flex: 1; /* Faz com que a área do carrinho ocupe o espaço restante */
+    background-color: #f9f9f9; /* Fundo mais suave para a área do carrinho */
 }
 
 .carrinho h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #333;
+    font-size: 24px;
 }
 
 .cart-item {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 20px;
+    margin: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f9f9f9;
-    transition: transform 0.2s;
+    background-color: #f7f7f7;
+    transition: transform 0.3s ease-in-out;
+    gap: 20px; /* Adiciona um espaçamento entre os itens */
 }
 
 .cart-item:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .cart-item h3 {
     margin: 0;
     color: #333;
+    font-size: 18px;
+    margin-bottom: 10px; /* Adiciona um espaçamento abaixo do nome do produto */
 }
 
 .cart-item p {
-    margin: 0;
+    margin: 5px 0;
     font-weight: bold;
     color: #333;
+}
+
+.cart-item .quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+/* Botões menores para o controle de quantidade */
+.cart-item .quantity-controls button {
+    font-size: 12px; /* Diminui o tamanho da fonte */
+    padding: 3px 6px; /* Diminui o espaçamento dentro do botão */
+    width: 20px; /* Diminui a largura do botão */
+    height: 20px; /* Diminui a altura do botão */
+    border: 2px solid black;
+    background-color: #00aeff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Estilo para o input de quantidade */
+.cart-item .quantity-controls .quantity-input {
+    width: 25px;
+    padding: 2px;
+    text-align: center;
+    font-size: 12px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+/* Efeito de hover para os botões */
+.cart-item .quantity-controls button:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Ajustando o tamanho da imagem para que fique similar ao primeiro código */
+.cart-item .product-image img {
+    width: 50px;
+    height: auto;
+    border-radius: 8px; /* Borda arredondada nas imagens */
 }
 
 button {
@@ -92,10 +139,11 @@ button {
     color: yellow;
     border: none;
     margin-top: 10px;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 button:hover {
@@ -105,8 +153,8 @@ button:hover {
 
 #cart-total {
     text-align: right;
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 30px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
 }
@@ -114,14 +162,16 @@ button:hover {
 h2 {
     margin-top: 30px;
     color: #333;
+    font-size: 22px;
 }
 
 select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 /* Rodapé */
@@ -130,13 +180,13 @@ footer {
     padding: 10px;
     background-color: #00aeff;
     color: yellow;
-    margin-top: auto; /* Empurra o rodapé para a parte inferior */
+    margin-top: auto;
 }
 
 /* Estilo do QR Code e informações */
 .qr-container {
     margin-top: 20px;
-    padding: 10px;
+    padding: 15px;
     border: 2px dashed #00aeff;
     text-align: center;
     background-color: #f0f8ff;

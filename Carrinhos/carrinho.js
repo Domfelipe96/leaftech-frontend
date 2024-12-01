@@ -1,4 +1,4 @@
-async function createSale(clienteId, produtosIds, endereco) {
+async function createSale(clienteId, produtosComQuantidade, endereco) {
     try {
         const response = await fetch('http://localhost:8000/api/vendas', {
             method: 'POST',
@@ -6,19 +6,33 @@ async function createSale(clienteId, produtosIds, endereco) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                cliente: clienteId,  // Certifique-se de que a variável clienteId está correta
-                produtos: produtosIds,
+                cliente: clienteId,
+                produtos: produtosComQuantidade,
                 endereco: endereco
             }),
         });
 
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
-        
+
         alert('Venda registrada com sucesso!');
     } catch (error) {
         console.error('Erro ao criar venda:', error);
         alert('Erro ao registrar a venda. Verifique os detalhes e tente novamente.');
     }
+}
+
+function updateItemQuantity(index, quantityChange) {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const item = carrinho[index];
+
+    // Atualiza a quantidade do item, garantindo que não seja menor que 1
+    item.quantidade = Math.max(1, item.quantidade + quantityChange);
+
+    // Atualiza o carrinho no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+    // Atualiza a exibição do carrinho
+    showCartItems();
 }
 
 function showCartItems() {
@@ -37,18 +51,41 @@ function showCartItems() {
 
     let total = 0;
 
-    // Exibe os itens do carrinho
+    // Mapeamento das imagens para os produtos
+    const caminhoImagem = {
+        "Banana": "/Imagens/banana.png",
+        "Maçã": "/Imagens/maça.png",
+        "Manjericão": "/Imagens/manjericao.png",
+        "Hortelã": "/Imagens/hortela.png",
+        "Batata": "/Imagens/batata.png"
+    };
+
+    // Exibe os itens do carrinho com a quantidade
     carrinho.forEach((item, index) => {
         const preco = parseFloat(item.preco); // Converte o preço para número
+        const quantidade = item.quantidade || 1; // Usa 1 se a quantidade não estiver definida
+
+        // Obtém a imagem do produto com base no nome
+        const imagemProduto = caminhoImagem[item.nome] || '/Imagens/default.png'; // Imagem padrão se não encontrar
+
+        // Exibe a quantidade e o valor total por item
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('cart-item');
         itemDiv.innerHTML = `
+            <div class="product-image">
+                <img src="${imagemProduto}" alt="${item.nome}" />
+            </div>
             <h3>${item.nome}</h3>
-            <p>R$ ${preco.toFixed(2)}</p>
+            <div>
+                <button onclick="updateItemQuantity(${index}, -1)">-</button>
+                <span>${quantidade}</span>
+                <button onclick="updateItemQuantity(${index}, 1)">+</button>
+            </div>
+            <p>R$ ${preco.toFixed(2)} x ${quantidade} = R$ ${(preco * quantidade).toFixed(2)}</p>
             <button onclick="removeItem(${index})">Remover</button>
         `;
         cartItemsDiv.appendChild(itemDiv);
-        total += preco;
+        total += preco * quantidade; // Calcula o total com a quantidade
     });
 
     // Exibe o total do carrinho
@@ -65,22 +102,25 @@ function removeItem(index) {
 function finalizeOrder() {
     const paymentMethod = document.getElementById('payment-method').value;
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const clienteId =  localStorage.getItem('idCliente');
-    const endereco =  localStorage.getItem('clienteEndereco');
+    const clienteId = localStorage.getItem('idCliente');
+    const endereco = localStorage.getItem('clienteEndereco');
 
     if (carrinho.length === 0) {
         alert("O carrinho está vazio!");
         return;
     }
 
-    // Extrai apenas os IDs dos produtos do carrinho
-    const produtosIds = carrinho.map(item => item.id);
+    // Extrai os IDs dos produtos e as quantidades do carrinho
+    const produtosComQuantidade = carrinho.map(item => ({
+        id: item.id,
+        quantidade: item.quantidade || 1 // Garante que a quantidade seja enviada
+    }));
 
-    // Chama a API para registrar a venda
-    createSale(clienteId, produtosIds, endereco);
+    // Chama a API para registrar a venda com quantidade
+    createSale(clienteId, produtosComQuantidade, endereco);
 
     // Após o registro, salva informações locais (opcional)
-    const totalOrderValue = carrinho.reduce((acc, item) => acc + parseFloat(item.preco), 0);
+    const totalOrderValue = carrinho.reduce((acc, item) => acc + parseFloat(item.preco) * (item.quantidade || 1), 0);
     const purchaseData = {
         items: carrinho,
         paymentMethod,
