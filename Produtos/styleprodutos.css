@@ -53,10 +53,12 @@ nav ul li a:hover {
     max-width: 1200px; /* Limita a largura máxima da lista de produtos */
 }
 
+/* Ajuste do h1 para mover um pouco mais para cima */
 .produtos-list h1 {
     font-size: 24px;
     font-weight: bold;
     color: #333; /* Cor do título */
+    margin-top: -10px; /* Ajusta a posição do título mais para cima */
     margin-bottom: 20px; /* Espaço entre o título e os produtos */
 }
 
