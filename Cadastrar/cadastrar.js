@@ -43,6 +43,9 @@ async function cadastrarCliente(event) {
 
             // Exibir a mensagem de sucesso usando pop-up
             alert(result.message || 'Cadastro realizado com sucesso!');
+
+            // Redirecionar para a página inicial (index)
+            window.location.href = '../index.html'; // Substitua o caminho se necessário
         } else {
             throw new Error(result.message || 'Erro ao cadastrar cliente');
         }
@@ -55,4 +58,3 @@ async function cadastrarCliente(event) {
 
 // Adicionando o ouvinte de evento para o formulário
 document.getElementById('cadastroForm').addEventListener('submit', cadastrarCliente);
-
