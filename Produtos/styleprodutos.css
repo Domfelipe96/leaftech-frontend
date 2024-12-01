@@ -1,8 +1,12 @@
+/* Estilo do corpo da página */
 body {
     background-color: whitesmoke;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
 }
 
 /* Estilo do cabeçalho */
@@ -40,21 +44,70 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-
+/* Estilo da lista de produtos */
 .produtos-list {
-    display: block;
-    margin: 50px;
+    display: flex; /* Usando flexbox para centralizar o conteúdo */
+    flex-direction: column;
+    align-items: center; /* Alinha os itens ao centro */
+    margin: 50px auto; /* Centraliza a lista na largura da página */
+    max-width: 1200px; /* Limita a largura máxima da lista de produtos */
 }
 
+.produtos-list h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Cor do título */
+    margin-bottom: 20px; /* Espaço entre o título e os produtos */
+}
+
+/* Estilo do item de produto */
 .product-item {
-    margin: 70px 0;
-    padding: 20px;
+    margin: 20px 0;
+    padding: 10px 20px; /* Reduz o padding para diminuir o espaço da div */
     background-color: white;
-    transition: transform 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição para transform e box-shadow */
     border: 1px solid #ccc;
     border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombreamento inicial */
+    display: flex; /* Exibe como flexbox */
+    gap: 10px; /* Diminui o espaço entre a imagem e os detalhes do produto */
+    align-items: center; /* Alinha verticalmente */
+    max-width: 800px; /* Limita a largura máxima de cada item de produto */
+    margin-left: auto;
+    margin-right: auto; /* Centraliza o item de produto dentro da lista */
+}
+
+/* Efeito de sombreamento quando o mouse passa sobre o item */
+.product-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Aumenta o sombreamento no hover */
+    transform: translateY(-5px); /* Levanta o produto um pouco */
+}
+
+/* Estilo para a imagem do produto */
+.product-image img {
+    width: 80px; /* Ajusta o tamanho da imagem */
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilo para os detalhes do produto */
+.product-details {
+    display: flex; /* Flexbox para os detalhes do produto */
+    justify-content: space-between; /* Distribui o nome e o botão */
+    width: 100%; /* Ocupa todo o espaço disponível */
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    gap: 10px; /* Espaçamento entre o nome e o botão */
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 18px;
+    flex-grow: 1; /* Faz o nome ocupar todo o espaço disponível */
+}
+
+.product-description {
+    font-size: 14px;
+    color: #555;
 }
 
 .btn {
@@ -64,6 +117,8 @@ nav ul li a:hover {
     color: yellow;
     text-decoration: none;
     border-radius: 5px;
+    min-width: 150px; /* Garante que o botão tenha uma largura mínima */
+    text-align: center; /* Alinha o texto dentro do botão */
 }
 
 .btn:hover {
@@ -71,13 +126,13 @@ nav ul li a:hover {
     background-color: #45a049;
 }
 
+/* Rodapé */
 footer {
     text-align: center;
-    margin-left: auto;
     padding: 10px;
-    margin-right: auto; /* Alinha o logo à esquerda */
     background-color: #00aeff;
     color: yellow;
     position: relative;
     width: 100%;
+    margin-top: auto; /* Garante que o footer fique no final da página */
 }

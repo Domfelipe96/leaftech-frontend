@@ -1,13 +1,13 @@
 // Lista de status
 const statuses = [
-    "Aguarde a confirmação do pedido",  // 0-1 minuto
-    "Pedido confirmado",                // 1-2 minutos
-    "Pedido saiu para Entrega",        // 2-3 minutos
+    "Aguarde a confirmação do pedido",  // 0-30 segundos
+    "Pedido confirmado",                // 30-60 segundos
+    "Pedido saiu para Entrega",        // 60-90 segundos
     "Entrega Realizada com sucesso"    // Após o final
 ];
 
-// Tempo total para a entrega (4 minutos em segundos)
-const totalTime = 4 * 60;
+// Tempo total para a entrega (2 minutos em segundos)
+const totalTime = 2 * 60;
 
 // Inicializa os elementos
 const statusDisplay = document.getElementById("status-display");
@@ -30,11 +30,11 @@ function startDeliveryTracking() {
         timeRemainingDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
 
         // Atualiza o status nos intervalos corretos
-        if (timeRemaining === 3 * 60) {
+        if (timeRemaining === 90) {
             statusDisplay.textContent = statuses[0];  // "Aguarde a confirmação do pedido"
-        } else if (timeRemaining === 2 * 60) {
+        } else if (timeRemaining === 60) {
             statusDisplay.textContent = statuses[1];  // "Pedido confirmado"
-        } else if (timeRemaining === 1 * 60) {
+        } else if (timeRemaining === 30) {
             statusDisplay.textContent = statuses[2];  // "Pedido saiu para Entrega"
         }
 

@@ -16,8 +16,8 @@ async function obterClientes() {
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o envio do formulário
 
-    const inputEmail = document.getElementById('username').value;
-    const inputPassword = document.getElementById('password').value;
+    const inputEmail = document.getElementById('username').value.trim();
+    const inputPassword = document.getElementById('password').value.trim();
 
     try {
         // Obtém os clientes cadastrados

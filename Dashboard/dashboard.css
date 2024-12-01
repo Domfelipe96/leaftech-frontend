@@ -4,6 +4,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garantir que o corpo ocupe toda a altura da tela */
 }
 
 /* Estilo do cabeçalho */
@@ -120,6 +123,7 @@ footer {
     position: relative;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Garante que o footer fique no final */
 }
 
 /* Responsividade */

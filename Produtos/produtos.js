@@ -17,19 +17,35 @@ function exibirProdutos(produtos) {
 
   // Itera sobre os produtos e cria o HTML para cada produto
   produtos.forEach(produto => {
-    const produtoItem = document.createElement('div');
-    produtoItem.classList.add('product-item');
+      const produtoItem = document.createElement('div');
+      produtoItem.classList.add('product-item');
 
-    produtoItem.innerHTML = `
-        <h2>${produto.nome}</h2>
-        <p>${produto.descricao || 'Descrição não disponível.'}</p>
-        <p>R$ ${produto.preco?.toFixed(2) || '0.00'}</p>
-        <button class="btn add-to-cart" data-id="${produto._id}" data-nome="${produto.nome}" data-preco="${produto.preco}">Adicionar ao Carrinho</button>
-    `;
+      // Definir caminho da imagem diretamente no código
+      const caminhoImagem = {
+          "Banana": "/Imagens/banana.png",
+          "Maçã": "/Imagens/maça.png",
+          "Manjericão": "/Imagens/manjericao.png",
+          "Hortelã": "/Imagens/hortela.png",
+          "Batata": "/Imagens/batata.png"
+      };
 
-    produtosLista.appendChild(produtoItem);
-});
+      // Usando o nome do produto para buscar o caminho da imagem
+      const imagemProduto = caminhoImagem[produto.nome] || '/Imagens/default.png';  // imagem padrão se o nome não corresponder
 
+      produtoItem.innerHTML = `
+          <div class="product-image">
+              <img src="${imagemProduto}" alt="${produto.nome}" />
+          </div>
+          <div class="product-details">
+              <h2 class="product-name">${produto.nome}</h2>
+              <p class="product-description">${produto.descricao || 'Descrição não disponível.'}</p>
+              <p>R$ ${produto.preco?.toFixed(2) || '0.00'}</p>
+              <button class="btn add-to-cart" data-id="${produto._id}" data-nome="${produto.nome}" data-preco="${produto.preco}">Adicionar ao Carrinho</button>
+          </div>
+      `;
+
+      produtosLista.appendChild(produtoItem);
+  });
 
   // Adiciona eventos aos botões "Adicionar ao Carrinho"
   configurarBotoesCarrinho();
@@ -38,15 +54,12 @@ function exibirProdutos(produtos) {
 // Função para configurar os eventos dos botões de adicionar ao carrinho
 function configurarBotoesCarrinho() {
   document.querySelectorAll('.add-to-cart').forEach(button => {
-
       button.addEventListener('click', () => {
-          // Captura os valores dos atributos data-* do botão
           const produtoId = button.getAttribute('data-id');
           const produtoNome = button.getAttribute('data-nome');
           const produtoPreco = button.getAttribute('data-preco');
 
-          adicionarAoCarrinho({ id: produtoId, nome: produtoNome, preco: produtoPreco  });
-           
+          adicionarAoCarrinho({ id: produtoId, nome: produtoNome, preco: produtoPreco });
       });
   });
 }
@@ -54,27 +67,21 @@ function configurarBotoesCarrinho() {
 // Função para adicionar um produto ao carrinho
 function adicionarAoCarrinho(produto) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  
-  // Adiciona o novo produto ao carrinho
-  carrinho.push({ 
-      id: produto.id, 
+  carrinho.push({
+      id: produto.id,
       nome: produto.nome,
       preco: produto.preco,
-      data: new Date().toISOString() // Adiciona a data em formato ISO
+      data: new Date().toISOString()
   });
-
-  // Atualiza o carrinho no localStorage
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
   alert("Produto foi adicionado ao carrinho!");
 }
 
-
 // Função para obter produtos da API
 async function obterProdutos() {
   try {
       const response = await fetch('http://localhost:8000/api/produtos', { method: 'GET' });
-
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
 
       const produtos = await response.json();
