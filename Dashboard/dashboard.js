@@ -1,8 +1,7 @@
 // Função para carregar os dados de vendas
 function loadSalesData() {
     const allSales = JSON.parse(localStorage.getItem('todasVendas')) || [];
-    const totalSales = allSales.length;
-    let totalRevenue = 0;
+    let totalRevenue = 0; // Inicializa a variável para a receita total
 
     // Limpa a lista antes de carregar
     const salesList = document.getElementById('sales-list');
@@ -10,8 +9,8 @@ function loadSalesData() {
 
     allSales.forEach(sale => {
         // Calcula o total de cada venda
-        const saleTotal = sale.items.reduce((acc, item) => acc + parseFloat(item.preco), 0);
-        totalRevenue += saleTotal;
+        const saleTotal = sale.items.reduce((acc, item) => acc + parseFloat(item.preco) * (item.quantidade || 1), 0);
+        totalRevenue += saleTotal; // Soma o total de cada venda ao total geral
 
         // Exibe os produtos da venda como uma lista
         const products = sale.items.map(item => `${item.nome}`).join(', ');
@@ -28,8 +27,8 @@ function loadSalesData() {
     });
 
     // Atualiza o resumo de vendas
-    document.getElementById('total-sales').textContent = totalSales;
-    document.getElementById('total-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
+    document.getElementById('total-sales').textContent = allSales.length; // Total de vendas
+    document.getElementById('total-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`; // Receita total calculada
 }
 
 // Carregar as vendas quando a página for aberta
