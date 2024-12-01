@@ -1,19 +1,23 @@
 function loadSalesData() {
     const allSales = JSON.parse(localStorage.getItem('todasVendas')) || [];
-    const salesByItem = {};
-    const revenueByPaymentMethod = {};
+    const salesByItem = {}; // Para armazenar a quantidade total vendida de cada produto
+    const revenueByPaymentMethod = {}; // Para armazenar a receita por forma de pagamento
     let totalRevenue = 0;
 
     allSales.forEach(sale => {
-        const saleTotal = sale.items.reduce((acc, item) => acc + parseFloat(item.preco), 0);
+        const saleTotal = sale.items.reduce((acc, item) => {
+            const itemTotal = parseFloat(item.preco) * (item.quantidade || 1);
+            acc += itemTotal;
+            return acc;
+        }, 0);
         totalRevenue += saleTotal;
 
-        // Agrupa vendas por item
+        // Agrupa vendas por item com base na quantidade
         sale.items.forEach(item => {
             if (!salesByItem[item.nome]) {
                 salesByItem[item.nome] = 0;
             }
-            salesByItem[item.nome]++;
+            salesByItem[item.nome] += item.quantidade || 1; // Soma as quantidades de cada produto
         });
 
         // Agrupa receita por forma de pagamento
@@ -36,12 +40,12 @@ function loadSalesData() {
     ];
 
     // Dados dinâmicos para o gráfico de vendas por produto
-    const productLabels = Object.keys(salesByItem);
-    const productData = Object.values(salesByItem);
+    const productLabels = Object.keys(salesByItem); // Produtos vendidos
+    const productData = Object.values(salesByItem); // Quantidade total de cada produto
 
     // Dados dinâmicos para o gráfico de receita por método de pagamento
-    const paymentLabels = Object.keys(revenueByPaymentMethod);
-    const paymentData = Object.values(revenueByPaymentMethod);
+    const paymentLabels = Object.keys(revenueByPaymentMethod); // Métodos de pagamento
+    const paymentData = Object.values(revenueByPaymentMethod); // Receita de cada forma de pagamento
 
     // Primeiro gráfico: Vendas por produto
     const salesChartCtx = document.getElementById('salesChart').getContext('2d');
@@ -73,7 +77,7 @@ function loadSalesData() {
         data: {
             labels: paymentLabels, // Métodos de pagamento dinâmicos
             datasets: [{
-                label: 'Vendas por forma de Pagamento',
+                label: 'Valor em reais R$',
                 data: paymentData, // Receitas dinâmicas
                 backgroundColor: colors.slice(0, paymentLabels.length), // Cores fixas
                 borderColor: borderColors.slice(0, paymentLabels.length), // Bordas fixas

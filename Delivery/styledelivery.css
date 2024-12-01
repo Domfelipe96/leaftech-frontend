@@ -86,7 +86,7 @@ main {
     text-align: center;
     width: 100%;
     max-width: 700px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 /* Exibição do status */
@@ -134,9 +134,9 @@ main {
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    display: none;
-    text-align: center;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #confirm-delivery:hover {
@@ -147,6 +147,15 @@ main {
 #confirm-delivery:active {
     transform: translateY(0);
 }
+
+/* Centralizar o botão */
+.delivery-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Rodapé */
 footer {

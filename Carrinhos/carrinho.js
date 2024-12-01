@@ -16,8 +16,6 @@ async function createSale(clienteId, produtosComQuantidade, endereco) {
 
         alert('Venda registrada com sucesso!');
     } catch (error) {
-        console.error('Erro ao criar venda:', error);
-        alert('Erro ao registrar a venda. Verifique os detalhes e tente novamente.');
     }
 }
 
