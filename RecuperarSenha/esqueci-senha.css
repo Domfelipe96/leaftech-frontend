@@ -60,14 +60,15 @@ nav ul li a:hover {
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #2c3e50; /* Azul-escuro */
+    color: #071c31; /* Azul-escuro */
 }
 
 /* Inputs */
 input {
-    width: 100%;
+    width: 80%;
     padding: 15px;
     margin-bottom: 15px;
+    margin-top: 15px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -86,6 +87,7 @@ button {
 }
 
 button:hover {
+    color: white;
     background-color: #218838; /* Verde escuro */
 }
 
@@ -93,7 +95,7 @@ button:hover {
 #recuperarMessage {
     font-size: 14px;
     margin-top: 10px;
-    color: black;
+    color: rgb(0, 0, 0);
     text-align: center;
 }
 

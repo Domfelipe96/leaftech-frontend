@@ -99,6 +99,7 @@ button {
 }
 
 button:hover {
+    color: white;
     background-color: #218838; /* Alterando a cor para um verde escuro */
 }
 
@@ -110,10 +111,6 @@ a {
     color: #00aeff; /* Azul vibrante */
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #2980b9; /* Azul mais escuro */
 }
 
 /* Mensagem de erro ou sucesso */
