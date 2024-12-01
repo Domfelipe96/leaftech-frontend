@@ -62,17 +62,17 @@ nav ul li a:hover {
 
 /* Estilo do item de produto */
 .product-item {
-    margin: 20px 0;
-    padding: 10px 20px; /* Reduz o padding para diminuir o espaço da div */
+    margin: 30px 0; /* Aumenta o espaçamento entre os itens */
+    padding: 20px 30px; /* Aumenta o padding interno da div */
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição para transform e box-shadow */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombreamento inicial */
     display: flex; /* Exibe como flexbox */
-    gap: 10px; /* Diminui o espaço entre a imagem e os detalhes do produto */
+    gap: 20px; /* Aumenta o espaço entre a imagem e os detalhes do produto */
     align-items: center; /* Alinha verticalmente */
-    max-width: 800px; /* Limita a largura máxima de cada item de produto */
+    max-width: 1000px; /* Aumenta a largura máxima de cada item de produto */
     margin-left: auto;
     margin-right: auto; /* Centraliza o item de produto dentro da lista */
 }
@@ -85,7 +85,7 @@ nav ul li a:hover {
 
 /* Estilo para a imagem do produto */
 .product-image img {
-    width: 80px; /* Ajusta o tamanho da imagem */
+    width: 80px; /* Aumenta o tamanho da imagem */
     height: auto;
     border-radius: 8px;
 }
@@ -96,28 +96,28 @@ nav ul li a:hover {
     justify-content: space-between; /* Distribui o nome e o botão */
     width: 100%; /* Ocupa todo o espaço disponível */
     align-items: center; /* Alinha os itens no centro verticalmente */
-    gap: 10px; /* Espaçamento entre o nome e o botão */
+    gap: 20px; /* Aumenta o espaçamento entre o nome e o botão */
 }
 
 .product-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px; /* Aumenta o tamanho da fonte do nome */
     flex-grow: 1; /* Faz o nome ocupar todo o espaço disponível */
 }
 
 .product-description {
-    font-size: 14px;
+    font-size: 16px; /* Aumenta o tamanho da descrição */
     color: #555;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Aumenta o padding do botão */
     background-color: #00aeff;
     color: yellow;
     text-decoration: none;
     border-radius: 5px;
-    min-width: 150px; /* Garante que o botão tenha uma largura mínima */
+    min-width: 50px; /* Garante que o botão tenha uma largura mínima */
     text-align: center; /* Alinha o texto dentro do botão */
 }
 
@@ -126,7 +126,7 @@ nav ul li a:hover {
     background-color: #45a049;
 }
 
-/* Rodapé */
+/* Estilo para o rodapé */
 footer {
     text-align: center;
     padding: 10px;
@@ -135,4 +135,34 @@ footer {
     position: relative;
     width: 100%;
     margin-top: auto; /* Garante que o footer fique no final da página */
+}
+
+/* Estilo para os botões de quantidade */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre os botões */
+}
+
+/* Estilo para os botões de quantidade */
+.quantity-selector button {
+    font-size: 14px; /* Aumenta a fonte para ficar mais visível */
+    padding: 4px 8px; /* Ajusta o padding para dar espaço dentro do botão */
+    width: 25px; /* Diminuindo a largura do botão */
+    height: 25px; /* Ajustando a altura do botão */
+    border: 2px solid black; /* Adiciona um contorno preto */
+    background-color: #00aeff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px; /* Borda arredondada, semelhante ao botão de adicionar ao carrinho */
+}
+
+/* Estilo para o input de quantidade */
+.quantity-selector .quantity-input {
+    width: 30px; /* Largura reduzida para o campo de quantidade */
+    padding: 3px;
+    text-align: center;
+    font-size: 12px; /* Tamanho de fonte menor */
+    border: 2px solid black; /* Contorno preto, semelhante aos botões */
+    border-radius: 5px; /* Borda arredondada */
 }
