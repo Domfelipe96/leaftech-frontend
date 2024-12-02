@@ -1,5 +1,5 @@
 // URL do backend
-const BASE_URL = 'http://localhost:8000/api/';
+const BASE_URL = 'https://leaftech-backend.vercel.app/';
 
 //Mensagem de boas vindas do BackEnd
 async function obterMensagem() {
