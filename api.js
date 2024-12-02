@@ -1,5 +1,5 @@
 // URL do backend
-const BASE_URL = 'http://localhost:8000/api/';
+const BASE_URL = 'https://leaftech-backend.onrender.com/api/';
 
 //Mensagem de boas vindas do BackEnd
 async function obterMensagem() {
@@ -25,7 +25,7 @@ async function obterMensagem() {
 
   async function criarProduto(dadosProduto) {
     try {
-      const response = await fetch('http://localhost:8000/api/produtos', {
+      const response = await fetch('https://leaftech-backend.onrender.com/api/produtos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ async function obterMensagem() {
   //*Obter todos produtos
   async function obterProdutos() {
     try {
-      const response = await fetch('http://localhost:8000/api/produtos', { method: 'GET' });
+      const response = await fetch('https://leaftech-backend.onrender.com/api/produtos', { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Produtos:', data);
@@ -58,7 +58,7 @@ async function obterMensagem() {
   //*Obter produto por ID
   async function obterProdutoPorId(produtoId) {
     try {
-      const response = await fetch(`http://localhost:8000/api/produtos/${produtoId}`, { method: 'GET' });
+      const response = await fetch(`https://leaftech-backend.onrender.com/api/produtos/${produtoId}`, { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Produto encontrado:', data);
@@ -73,7 +73,7 @@ async function obterMensagem() {
   //*Criar cliente
   async function criarCliente(dadosCliente) {
     try {
-      const response = await fetch('http://localhost:8000/api/clientes', {
+      const response = await fetch('https://leaftech-backend.onrender.com/api/clientes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ async function obterMensagem() {
   //*Obter todos os clientes
   async function obterClientes() {
     try {
-      const response = await fetch('http://localhost:8000/api/clientes', { method: 'GET' });
+      const response = await fetch('https://leaftech-backend.onrender.com/api/clientes', { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Clientes:', data);
@@ -106,7 +106,7 @@ async function obterMensagem() {
   //*Obter cliente por ID
   async function obterClientePorId(clienteId) {
     try {
-      const response = await fetch(`http://localhost:8000/api/clientes/${clienteId}`, { method: 'GET' });
+      const response = await fetch(`https://leaftech-backend.onrender.com/api/clientes/${clienteId}`, { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Cliente encontrado:', data);
@@ -119,7 +119,7 @@ async function obterMensagem() {
   //*Login do cliente
   async function loginCliente(credentials) {
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
+      const response = await fetch('https://leaftech-backend.onrender.com/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ async function obterMensagem() {
   //*Criar venda
   async function criarVenda(dadosVenda) {
     try {
-      const response = await fetch('http://localhost:8000/api/vendas', {
+      const response = await fetch('https://leaftech-backend.onrender.com/api/vendas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ async function obterMensagem() {
   //*Obter todas as vendas
   async function obterVendas() {
     try {
-      const response = await fetch('http://localhost:8000/api/vendas', { method: 'GET' });
+      const response = await fetch('https://leaftech-backend.onrender.com/api/vendas', { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Vendas:', data);
@@ -174,7 +174,7 @@ async function obterMensagem() {
   //*Obter venda por ID
   async function obterVendaPorId(vendaId) {
     try {
-      const response = await fetch(`http://localhost:8000/api/vendas/${vendaId}`, { method: 'GET' });
+      const response = await fetch(`https://leaftech-backend.onrender.com/api/vendas/${vendaId}`, { method: 'GET' });
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
       const data = await response.json();
       console.log('Venda encontrada:', data);

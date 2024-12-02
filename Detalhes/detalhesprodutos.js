@@ -1,7 +1,7 @@
 // Função para obter produtos e exibi-los na página
 async function obterProdutos() {
   try {
-    const response = await fetch('http://localhost:8000/api/produtos', { method: 'GET' });
+    const response = await fetch('https://leaftech-backend.onrender.com/api/produtos', { method: 'GET' });
     
     if (!response.ok) throw new Error(`Erro: ${response.status}`);
     

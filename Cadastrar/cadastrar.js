@@ -26,7 +26,7 @@ async function cadastrarCliente(event) {
 
     try {
         // Enviando os dados para o backend via API
-        const response = await fetch('http://localhost:8000/api/clientes', {
+        const response = await fetch('https://leaftech-backend.onrender.com/api/clientes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

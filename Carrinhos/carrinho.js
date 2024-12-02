@@ -1,6 +1,6 @@
 async function createSale(clienteId, produtosComQuantidade, endereco) {
     try {
-        const response = await fetch('http://localhost:8000/api/vendas', {
+        const response = await fetch('https://leaftech-backend.onrender.com/api/vendas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
