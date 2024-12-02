@@ -108,7 +108,7 @@ function adicionarAoCarrinho(produto) {
 // Função para obter produtos da API
 async function obterProdutos() {
     try {
-        const response = await fetch('leaftech-backend.onrender.com/api/produtos', { method: 'GET' });
+        const response = await fetch('https://leaftech-backend.onrender.com/api/produtos', { method: 'GET' });
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
 
         const produtos = await response.json();
