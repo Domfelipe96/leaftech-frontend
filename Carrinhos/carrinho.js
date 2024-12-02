@@ -1,6 +1,7 @@
 async function createSale(clienteId, produtosComQuantidade, endereco) {
     try {
-        const response = await fetch('https://leaftech-backend.onrender.com/api/vendas', {
+        console.log(produtosComQuantidade);
+        const response = await fetch('leaftech-backend.onrender.com/api/vendas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -14,7 +15,12 @@ async function createSale(clienteId, produtosComQuantidade, endereco) {
 
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
 
-        alert('Venda registrada com sucesso!');
+        console.log(JSON.stringify({
+            cliente: clienteId,
+            produtos: produtosComQuantidade,
+            endereco: endereco
+        }))
+       // alert('Venda registrada com sucesso!');
     } catch (error) {
     }
 }

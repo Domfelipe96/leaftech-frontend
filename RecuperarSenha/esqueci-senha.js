@@ -1,7 +1,7 @@
 // Função para obter os clientes cadastrados (simulação de chamada para o servidor ou API)
 async function obterClientes() {
     try {
-        const response = await fetch('https://leaftech-backend.onrender.com/api/clientes');
+        const response = await fetch('leaftech-backend.onrender.com/api/clientes');
         if (!response.ok) {
             throw new Error(`Erro ao obter clientes: ${response.status}`);
         }
